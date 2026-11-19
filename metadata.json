@@ -1,0 +1,6 @@
+{
+  "name": "Commodity Costing Ledger",
+  "description": "Modern Swiss ledger for trade and commodity costing, landed rate calculation, and manual multi-country currency conversion.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
