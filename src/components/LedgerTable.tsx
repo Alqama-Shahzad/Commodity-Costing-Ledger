@@ -943,14 +943,14 @@ export function LedgerTable({
           mobileView === 'table' ? 'block' : 'hidden md:block print:block'
         } bg-white border border-[#E5E2DC] rounded-md overflow-hidden print-ledger-wrapper`}
       >
-        <div className="overflow-auto ledger-scroll max-h-[calc(100vh-270px)] print-ledger-wrapper">
+        <div className="overflow-auto ledger-scroll min-h-[260px] max-h-[calc(100vh-225px)] print-ledger-wrapper">
           <table className="w-full border-collapse text-left">
             <thead>
               {/* Tier 1: Group Headers */}
               <tr className="bg-[#FAF9F6] border-b border-[#E5E2DC] text-[11px] font-medium text-[#64748B] h-[38px]">
                 <th
                   colSpan={3}
-                  className="sticky top-0 md:left-0 z-20 md:z-30 bg-[#FAF9F6] px-4 py-1.5 h-[38px] border-r border-[#E5E2DC] whitespace-nowrap"
+                  className="sticky top-0 lg:left-0 z-20 lg:z-30 bg-[#FAF9F6] px-3.5 xl:px-4 py-1.5 h-[38px] border-r border-[#E5E2DC] whitespace-nowrap"
                 >
                   Commodity &amp; Volume
                 </th>
@@ -1080,19 +1080,19 @@ export function LedgerTable({
 
               {/* Tier 2: Column Headers & Sticky Currency Rate Inputs */}
               <tr className="bg-[#FAF9F6] border-b border-[#E5E2DC] text-xs font-semibold text-[#18181B] align-top">
-                <th className="sticky top-[38px] md:left-0 z-20 md:z-30 bg-[#FAF9F6] px-4 py-2.5 min-w-[205px] border-r border-[#E5E2DC]">
+                <th className="sticky top-[38px] lg:left-0 z-20 lg:z-30 bg-[#FAF9F6] px-3.5 xl:px-4 py-2.5 min-w-[175px] xl:min-w-[190px] 2xl:min-w-[205px] border-r border-[#E5E2DC]">
                   <div>Origin &amp; Product</div>
                   <div className="text-[11px] font-normal text-[#64748B] mt-0.5">
                     Lot Ref · Shipment Date
                   </div>
                 </th>
 
-                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-3 py-2.5 min-w-[135px] border-r border-[#E5E2DC] text-right">
+                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-2.5 xl:px-3 py-2.5 min-w-[115px] xl:min-w-[125px] border-r border-[#E5E2DC] text-right">
                   <div>Purchase Amount</div>
                   <div className="text-[11px] font-normal text-[#64748B] mt-0.5">Total PKR</div>
                 </th>
 
-                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-3 py-2.5 min-w-[125px] border-r border-[#E5E2DC] text-right">
+                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-2.5 xl:px-3 py-2.5 min-w-[105px] xl:min-w-[115px] border-r border-[#E5E2DC] text-right">
                   <div>Quantity</div>
                   <div className="text-[11px] font-normal text-[#64748B] mt-0.5">Kg / Tons</div>
                 </th>
@@ -1102,7 +1102,7 @@ export function LedgerTable({
                   return (
                     <th
                       key={col.id}
-                      className="sticky top-[38px] z-20 bg-[#FAF9F6] px-3 py-2.5 min-w-[110px] border-r border-[#E5E2DC] text-right"
+                      className="sticky top-[38px] z-20 bg-[#FAF9F6] px-2.5 xl:px-3 py-2.5 min-w-[92px] xl:min-w-[100px] border-r border-[#E5E2DC] text-right"
                     >
                       {isRenaming ? (
                         <div className="flex items-center justify-end gap-1">
@@ -1161,7 +1161,7 @@ export function LedgerTable({
                   );
                 })}
 
-                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-3 py-2.5 min-w-[115px] border-r border-[#E5E2DC] text-right">
+                <th className="sticky top-[38px] z-20 bg-[#FAF9F6] px-2.5 xl:px-3 py-2.5 min-w-[96px] xl:min-w-[108px] border-r border-[#E5E2DC] text-right">
                   <div>Base Rate</div>
                   <div className="text-[11px] font-normal text-[#64748B] mt-0.5">PKR / kg</div>
                 </th>
@@ -1169,7 +1169,7 @@ export function LedgerTable({
                 {countries.map((country) => (
                   <th
                     key={country.id}
-                    className={`sticky top-[38px] z-20 px-3 py-2.5 min-w-[195px] border-r border-[#E5E2DC] text-right ${
+                    className={`sticky top-[38px] z-20 px-2.5 xl:px-3 py-2.5 min-w-[152px] xl:min-w-[164px] 2xl:min-w-[178px] border-r border-[#E5E2DC] text-right ${
                       country.isBase ? 'bg-[#F4F8F6]' : 'bg-[#FAF9F6]'
                     }`}
                   >
@@ -1207,14 +1207,14 @@ export function LedgerTable({
                           value={country.rate}
                           ariaLabel={`${country.name} (${country.code}) rate`}
                           onCommit={(next) => onUpdateCountryRate(country.id, next)}
-                          className="w-24 px-1.5 py-0.5 text-xs font-mono tabular-nums font-medium text-right text-[#18181B] bg-white border border-[#E5E2DC] rounded focus:outline-none focus:border-[#0F5132]"
+                          className="w-20 xl:w-24 px-1.5 py-0.5 text-xs font-mono tabular-nums font-medium text-right text-[#18181B] bg-white border border-[#E5E2DC] rounded focus:outline-none focus:border-[#0F5132]"
                         />
                       )}
                     </div>
                   </th>
                 ))}
 
-                <th className="no-print sticky top-[38px] z-20 bg-[#FAF9F6] px-3 py-2.5 min-w-[126px] text-center">
+                <th className="no-print sticky top-[38px] z-20 bg-[#FAF9F6] px-2.5 py-2.5 min-w-[112px] text-center">
                   <span className="sr-only">Row Actions</span>
                 </th>
               </tr>
@@ -1269,8 +1269,8 @@ export function LedgerTable({
                     key={item.id}
                     className="group bg-white hover:bg-[#FAF9F6]/70 transition-colors align-top"
                   >
-                    {/* Origin & Product + Lot Ref & Date (sticky left on md+) */}
-                    <td className="md:sticky md:left-0 md:z-10 bg-white group-hover:bg-[#FAF9F6] px-4 py-3 border-r border-[#E5E2DC]">
+                    {/* Origin & Product + Lot Ref & Date (sticky left on lg+) */}
+                    <td className="lg:sticky lg:left-0 lg:z-10 bg-white group-hover:bg-[#FAF9F6] px-3.5 xl:px-4 py-3 border-r border-[#E5E2DC]">
                       <div className="flex flex-col gap-0.5">
                         <input
                           type="text"
@@ -1515,7 +1515,7 @@ export function LedgerTable({
             {/* Sticky Summary Footer */}
             <tfoot>
               <tr className="bg-[#F5F3EE] border-t-2 border-[#E5E2DC] text-xs font-semibold text-[#18181B]">
-                <td className="sticky bottom-0 md:left-0 z-20 md:z-30 bg-[#F5F3EE] px-4 py-3 border-r border-[#E5E2DC]">
+                <td className="sticky bottom-0 lg:left-0 z-20 lg:z-30 bg-[#F5F3EE] px-3.5 xl:px-4 py-3 border-r border-[#E5E2DC]">
                   <div className="text-xs font-semibold text-[#18181B]">Ledger Summary</div>
                   <div className="text-[11px] font-normal text-[#64748B] mt-0.5">
                     {rowComputations.length}{' '}

@@ -3,6 +3,8 @@ import { Plus, RotateCcw, Undo2, X } from 'lucide-react';
 import { CurrencyHeaderStrip } from './components/CurrencyHeaderStrip';
 import { ItemFormModal } from './components/ItemFormModal';
 import { LedgerTable } from './components/LedgerTable';
+import { OfflineIndicator } from './components/OfflineIndicator';
+import { PWAInstallButton } from './components/PWAInstallButton';
 import { LedgerState, TradeItem, UndoSnapshot } from './types/ledger';
 import {
   getInitialLedgerState,
@@ -273,7 +275,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FAF9F6] text-[#18181B] flex flex-col">
       <header className="no-print bg-white border-b border-[#E5E2DC]">
-        <div className="max-w-[1680px] mx-auto px-3.5 sm:px-6 py-2.5 sm:py-0 sm:h-14 flex items-center justify-between gap-3 sm:gap-6">
+        <div className="max-w-[2400px] mx-auto px-3.5 sm:px-5 lg:px-6 2xl:px-8 py-2.5 sm:py-0 sm:h-14 flex items-center justify-between gap-3 sm:gap-6">
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-6 min-w-0">
             <h1 className="text-sm sm:text-base font-semibold tracking-tight text-[#18181B] truncate">
               Commodity Costing Ledger
@@ -290,7 +292,8 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+            <PWAInstallButton />
             <button
               type="button"
               onClick={handleResetLedger}
@@ -314,7 +317,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="flex-1 max-w-[1680px] w-full mx-auto px-3.5 sm:px-6 py-3 sm:py-4 space-y-3">
+      <main className="flex-1 max-w-[2400px] w-full mx-auto px-3.5 sm:px-5 lg:px-6 2xl:px-8 py-3 sm:py-4 space-y-3">
         <CurrencyHeaderStrip
           countries={ledger.countries}
           onUpdateRate={handleUpdateCountryRate}
@@ -376,6 +379,8 @@ export default function App() {
           </div>
         </div>
       )}
+
+      <OfflineIndicator />
     </div>
   );
 }

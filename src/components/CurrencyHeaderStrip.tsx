@@ -150,15 +150,15 @@ export function CurrencyHeaderStrip({
         </button>
       </div>
 
-      {/* Rates Body: 2-col grid on mobile, inline flex strip on md+ */}
+      {/* Rates Body: 2-col mobile, 3-col tablet, 5-col laptop, single-line flex on xl+ */}
       <div
         className={`${
           mobileExpanded ? 'block' : 'hidden md:block'
-        } px-3.5 sm:px-4 py-2.5`}
+        } px-3.5 sm:px-5 lg:px-6 py-2.5`}
       >
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-4">
-          <div className="flex flex-col md:flex-row md:flex-wrap md:items-center gap-3 md:gap-x-5 md:gap-y-2">
-            <div className="hidden md:flex items-center gap-2 pr-3 border-r border-[#E5E2DC]">
+        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 xl:gap-4">
+          <div className="flex flex-col xl:flex-row xl:flex-wrap xl:items-center gap-3 xl:gap-x-5 xl:gap-y-2 flex-1 min-w-0">
+            <div className="hidden xl:flex items-center gap-2 pr-3 border-r border-[#E5E2DC] shrink-0">
               <span className="text-xs font-semibold text-[#18181B] whitespace-nowrap">
                 Exchange Rates
               </span>
@@ -167,13 +167,35 @@ export function CurrencyHeaderStrip({
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap items-center gap-x-4 gap-y-2.5 md:gap-x-5 md:gap-y-2">
+            <div className="hidden md:flex xl:hidden items-center justify-between gap-3 pb-1 border-b border-[#E5E2DC]/60">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-[#18181B]">
+                  Exchange Rates
+                </span>
+                <span className="text-xs text-[#64748B]">
+                  Manual · 1 PKR base
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsAdding((prev) => !prev);
+                  setError('');
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0F5132] border border-[#0F5132]/30 hover:border-[#0F5132] hover:bg-[#0F5132]/5 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                Add Country
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:flex xl:flex-wrap items-center gap-x-4 gap-y-2.5 xl:gap-x-5 xl:gap-y-2">
               {countries.map((country) => (
                 <div
                   key={country.id}
-                  className="flex flex-col md:flex-row md:items-center gap-0.5 md:gap-2 text-xs pb-1.5 md:pb-0 border-b border-[#E5E2DC]/60 md:border-b-0"
+                  className="flex flex-col xl:flex-row xl:items-center gap-0.5 xl:gap-2 text-xs pb-1.5 xl:pb-0 border-b border-[#E5E2DC]/60 xl:border-b-0"
                 >
-                  <div className="flex items-center justify-between md:justify-start gap-1.5">
+                  <div className="flex items-center justify-between xl:justify-start gap-1.5">
                     <div className="flex items-center gap-1.5 min-w-0">
                       <span className="font-medium text-[#18181B] truncate">
                         {country.name}
@@ -188,7 +210,7 @@ export function CurrencyHeaderStrip({
                         onClick={() => onRemoveCountry(country.id)}
                         title={`Remove ${country.name}`}
                         aria-label={`Remove ${country.name}`}
-                        className="md:hidden p-1.5 -mr-1 text-[#64748B] hover:text-red-700 transition-colors cursor-pointer"
+                        className="xl:hidden p-1 -mr-1 text-[#64748B] hover:text-red-700 transition-colors cursor-pointer"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
@@ -196,7 +218,7 @@ export function CurrencyHeaderStrip({
                   </div>
 
                   {country.isBase ? (
-                    <span className="font-mono tabular-nums text-xs text-[#0F5132] font-medium md:pl-1 py-1 md:py-0">
+                    <span className="font-mono tabular-nums text-xs text-[#0F5132] font-medium xl:pl-1 py-1 xl:py-0">
                       1 (Base)
                     </span>
                   ) : (
@@ -211,7 +233,7 @@ export function CurrencyHeaderStrip({
                         onClick={() => onRemoveCountry(country.id)}
                         title={`Remove ${country.name}`}
                         aria-label={`Remove ${country.name}`}
-                        className="hidden md:inline-flex p-0.5 text-[#64748B] hover:text-red-700 transition-colors cursor-pointer"
+                        className="hidden xl:inline-flex p-0.5 text-[#64748B] hover:text-red-700 transition-colors cursor-pointer"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
@@ -228,7 +250,7 @@ export function CurrencyHeaderStrip({
               setIsAdding((prev) => !prev);
               setError('');
             }}
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0F5132] border border-[#0F5132]/30 hover:border-[#0F5132] hover:bg-[#0F5132]/5 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#0F5132] border border-[#0F5132]/30 hover:border-[#0F5132] hover:bg-[#0F5132]/5 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             <Plus className="w-3.5 h-3.5" />
             Add Country
